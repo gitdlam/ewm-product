@@ -22,7 +22,7 @@ func init() {
 }
 
 func UUToHex(uuid string) string {
-	uuidSlice := make([]string, 22)
+	uuidSlice := make([]string, 0, 22)
 	for _, ch := range uuid {
 		uuidSlice = append(uuidSlice, fmt.Sprintf("%06b", scheme[string(ch)]))
 
@@ -38,7 +38,7 @@ func UUToHex(uuid string) string {
 }
 
 func HexToUU(s string) string {
-	uuidSlice := make([]string, 22)
+	uuidSlice := make([]string, 0, 22)
 
 	bigInt := new(big.Int)
 	bigInt.SetString(s, 16)
