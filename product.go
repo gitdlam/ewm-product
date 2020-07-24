@@ -58,6 +58,5 @@ func HexToUU(s string) string {
 		j = j + 6
 	}
 
-	//return strings.Join(uuidSlice, "")
 	return string(uuidSlice)
 }
