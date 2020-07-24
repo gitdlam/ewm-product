@@ -14,7 +14,7 @@ func TestSpeed(t *testing.T) {
 }
 
 func TestAssertExamples(t *testing.T) {
-	hToU := map[string]string{
+	data := map[string]string{
 		"005056B31E4F1EE48398F7FA866FCB15": "051MinvF7kI3cFVwXc}B5G",
 		"005056B33BF11EE3BAC398355F449E72": "051Mipln7kEwmvWrNqIUSW",
 		"005056B3483B1ED487A6145349669844": "051MiqWx7jI7fXHJIMQOH0",
@@ -22,7 +22,7 @@ func TestAssertExamples(t *testing.T) {
 		"91AD714ECF7C7571E10000000A141F31": "aQrnJizyTN7X00002XGVCG",
 	}
 
-	for k, v := range hToU {
+	for k, v := range data {
 		if HexToC22(k) != v {
 			t.Fatal("Failed HexToUU")
 		}
