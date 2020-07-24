@@ -9,26 +9,26 @@ import (
 )
 
 var (
-	schemeRunes string = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}"
-	scheme      map[rune]int
+	base64Table string = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}"
+	indexMap      map[rune]int
 )
 
 func init() {
-	scheme = map[rune]int{}
+	indexMap = map[rune]int{}
 
-	for i, ch := range schemeRunes {
-		scheme[ch] = i
+	for i, ch := range base64Table {
+		indexMap[ch] = i
 	}
 }
 
-func UUToHex(uuid string) string {
-	uuidSlice := make([]string, 0, 22)
-	for _, ch := range uuid {
-		uuidSlice = append(uuidSlice, fmt.Sprintf("%06b", scheme[ch]))
+func C22ToHex(c22 string) string {
+	binaryChunks := make([]string, 0, 22)
+	for _, ch := range c22 {
+		binaryChunks = append(binaryChunks, fmt.Sprintf("%06b", indexMap[ch]))
 
 	}
 	bigInt := new(big.Int)
-	b := strings.Join(uuidSlice, "")
+	b := strings.Join(binaryChunks, "")
 	b = b[:len(b)-4]
 	bigInt.SetString(b, 2)
 	h := bigInt.Text(16)
@@ -37,11 +37,11 @@ func UUToHex(uuid string) string {
 
 }
 
-func HexToUU(s string) string {
-	uuidSlice := make([]byte, 0, 22)
+func HexToC22(hex string) string {
+	c22 := make([]byte, 0, 22)
 
 	bigInt := new(big.Int)
-	bigInt.SetString(s, 16)
+	bigInt.SetString(hex, 16)
 	b := bigInt.Text(2)
 
 	b = strings.Repeat("0", 128-len(b)) + b + "0000"
@@ -53,10 +53,10 @@ func HexToUU(s string) string {
 
 	for i < 132 {
 		bigInt.SetString(b[i:j], 2)
-		uuidSlice = append(uuidSlice, schemeRunes[int(bigInt.Int64())])
+		c22 = append(c22, base64Table[int(bigInt.Int64())])
 		i = i + 6
 		j = j + 6
 	}
 
-	return string(uuidSlice)
+	return string(c22)
 }

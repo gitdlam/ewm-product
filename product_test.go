@@ -7,8 +7,8 @@ import (
 
 func TestSpeed(t *testing.T) {
 	for i := 0; i < 10000; i++ {
-		HexToUU("005056B31E4F1EE48398F7FA866FCB15")
-		UUToHex("051MinvF7kI3cFVwXc}B5G")
+		HexToC22("005056B31E4F1EE48398F7FA866FCB15")
+		C22ToHex("051MinvF7kI3cFVwXc}B5G")
 	}
 
 }
@@ -23,18 +23,18 @@ func TestAssertExamples(t *testing.T) {
 	}
 
 	for k, v := range hToU {
-		if HexToUU(k) != v {
+		if HexToC22(k) != v {
 			t.Fatal("Failed HexToUU")
 		}
-		if UUToHex(v) != k {
+		if C22ToHex(v) != k {
 			t.Fatal("Failed UUToHex")
 		}
 
-		if UUToHex(HexToUU(k)) != k {
+		if C22ToHex(HexToC22(k)) != k {
 			t.Fatal("Failed UUtoHex(HexToUU)")
 		}
 
-		if HexToUU(UUToHex(v)) != v {
+		if HexToC22(C22ToHex(v)) != v {
 			t.Fatal("Failed HextoUU(UUToHex)")
 		}
 
