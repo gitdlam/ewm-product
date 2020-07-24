@@ -24,18 +24,18 @@ func TestAssertExamples(t *testing.T) {
 
 	for k, v := range data {
 		if HexToC22(k) != v {
-			t.Fatal("Failed HexToUU")
+			t.Fatal("Failed HexToC22")
 		}
 		if C22ToHex(v) != k {
-			t.Fatal("Failed UUToHex")
+			t.Fatal("Failed C22ToHex")
 		}
 
 		if C22ToHex(HexToC22(k)) != k {
-			t.Fatal("Failed UUtoHex(HexToUU)")
+			t.Fatal("Failed C22toHex(HexToC22)")
 		}
 
 		if HexToC22(C22ToHex(v)) != v {
-			t.Fatal("Failed HextoUU(UUToHex)")
+			t.Fatal("Failed HextoC22(C22ToHex)")
 		}
 
 	}
