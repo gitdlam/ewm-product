@@ -16,4 +16,8 @@ func TestProduct(t *testing.T) {
 		t.Fatal("Strings should equal.")
 	}
 
+	for i := 0; i < 10000; i++ {
+		HexToUU(hexString)
+		UUToHex(uuid)
+	}
 }
