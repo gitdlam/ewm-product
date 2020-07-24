@@ -1,23 +1,42 @@
 package product
 
 import (
-	"fmt"
+	//	"fmt"
 	"testing"
 )
 
-func TestProduct(t *testing.T) {
-	hexString := "000D3AD2A5EB1ED9A6F84A4E0A7E3DE2"
-
-	fmt.Println("hex:", hexString)
-	uuid := HexToUU(hexString)
-	fmt.Println("uuid:", uuid)
-	fmt.Println("hex:", UUToHex(uuid))
-	if UUToHex(uuid) != hexString {
-		t.Fatal("Strings should equal.")
+func TestSpeed(t *testing.T) {
+	for i := 0; i < 10000; i++ {
+		HexToUU("005056B31E4F1EE48398F7FA866FCB15")
+		UUToHex("051MinvF7kI3cFVwXc}B5G")
 	}
 
-	for i := 0; i < 10000; i++ {
-		HexToUU(hexString)
-		UUToHex(uuid)
+}
+
+func TestAssertExamples(t *testing.T) {
+	hToU := map[string]string{
+		"005056B31E4F1EE48398F7FA866FCB15": "051MinvF7kI3cFVwXc}B5G",
+		"005056B33BF11EE3BAC398355F449E72": "051Mipln7kEwmvWrNqIUSW",
+		"005056B3483B1ED487A6145349669844": "051MiqWx7jI7fXHJIMQOH0",
+		"4C419E52B069732EE10000000A141F1F": "J46UKh1fSoxX00002XGV7m",
+		"91AD714ECF7C7571E10000000A141F31": "aQrnJizyTN7X00002XGVCG",
+	}
+
+	for k, v := range hToU {
+		if HexToUU(k) != v {
+			t.Fatal("Failed HexToUU")
+		}
+		if UUToHex(v) != k {
+			t.Fatal("Failed UUToHex")
+		}
+
+		if UUToHex(HexToUU(k)) != k {
+			t.Fatal("Failed UUtoHex(HexToUU)")
+		}
+
+		if HexToUU(UUToHex(v)) != v {
+			t.Fatal("Failed HextoUU(UUToHex)")
+		}
+
 	}
 }
