@@ -1,4 +1,4 @@
 # ewm-product
-Conversion between 32 character hexadecimal string and 22 character base64** encoded string.
+UUID format conversion between the 32 character hexadecimal form (without hyphens), and the 22 character base64** encoded form.
 
-** Note that the base64 index table is non-standard.  See code.
+** Note that the base64 index table used, is non-standard.  See code.
