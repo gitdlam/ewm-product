@@ -1,7 +1,6 @@
 package product
 
 import (
-	"bytes"
 
 	//	"log"
 	"math/big"
@@ -13,7 +12,8 @@ import (
 func Encode(hex string) string {
 	bigInt := new(big.Int)
 	bigInt.SetString(hex, 16)
-	return RawCustomEncoding.EncodeToString(append(bytes.Repeat([]byte{byte(0)}, 16-len(bigInt.Bytes())), bigInt.Bytes()...))
+	padding := make([]byte, 16-len(bigInt.Bytes()))
+	return RawCustomEncoding.EncodeToString(append(padding, bigInt.Bytes()...))
 
 }
 
