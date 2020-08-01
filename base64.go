@@ -1,6 +1,6 @@
 package product
 
-// Modified from the Go Authors's base64 package
+// Copied and modified from the base64 package from the standard library by the Go Authors.
 
 import (
 	"encoding/binary"
