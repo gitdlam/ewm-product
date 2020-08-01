@@ -5,4 +5,4 @@ Encode() converts hexadecimal to the non-standard base64.
 
 Decode() converts the the non-standard base64 to hexadecimal.
 
-** The non-standard-ness is the different character set used in the base64 index table.  See code for details.
+** The non-standard-ness is the different character set used in the base64 index table.  Otherwise it is a copy from the standard library. See code for details.
