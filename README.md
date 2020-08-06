@@ -1,8 +1,5 @@
 # ewm-product
-UUID, or GUID, is a 128 bit number used as an ID number.  The same number can be represented in different forms.  This package provides conversion between the hexadecimal form and a non-standard base64 form. 
+This package was used for learning about UUID.  It's been superseded by the apps-text package in this repo.
 
-Encode() converts hexadecimal to the non-standard base64.
+UUID, or GUID, is a 128 bit number used as an ID number.  The same number can be represented in different forms.  This package provides conversion between the hexadecimal form and a non-standard base64 form used at work. 
 
-Decode() converts the the non-standard base64 to hexadecimal.
-
-** The non-standard-ness is the different character set used in the base64 index table.  Otherwise it is a copy from the standard library. See code for details.
